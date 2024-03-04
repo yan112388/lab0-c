@@ -15,6 +15,3 @@ dm
 it meerkat
 rh dolphin
 rh bear
-rh bear
-rh gerbil
-rh meerkat

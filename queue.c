@@ -121,11 +121,9 @@ bool q_delete_mid(struct list_head *head)
     if (!head || list_empty(head))
         return NULL;
 
-    struct list_head *slow = head, *fast = head;
-    for (; fast && fast->next; fast = fast->next->next)
-        slow = slow->next;
-
-    if (fast == head)
+    struct list_head *slow = head->next;
+    for (struct list_head *fast = head->next;
+         fast != head && fast->next != head; fast = fast->next->next)
         slow = slow->next;
 
     struct list_head *to_delete = slow;
