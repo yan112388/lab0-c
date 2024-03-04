@@ -267,6 +267,21 @@ int q_ascend(struct list_head *head)
  * the right side of it */
 int q_descend(struct list_head *head)
 {
+    if (!head || list_empty(head))
+        return 0;
+
+    struct list_head *node = (head->prev);
+
+    while (node->prev != (head)) {
+        element_t *curr_ele = list_entry(node, element_t, list);
+        element_t *prev_ele = list_entry(node->prev, element_t, list);
+        if (strcmp(curr_ele->value, prev_ele->value) > 0) {
+            list_del(node->prev);
+            q_release_element(prev_ele);
+        } else {
+            node = node->prev;
+        }
+    }
     // https://leetcode.com/problems/remove-nodes-from-linked-list/
     return 0;
 }
