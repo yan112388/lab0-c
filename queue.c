@@ -141,7 +141,8 @@ bool q_delete_dup(struct list_head *head)
     bool is_dup = false;
     element_t *curr_ele, *next_ele;
     list_for_each_entry_safe (curr_ele, next_ele, head, list) {
-        if (strcmp(curr_ele->value, next_ele->value) == 0) {
+        if (curr_ele->list.next != head &&
+            strcmp(curr_ele->value, next_ele->value) == 0) {
             list_del(&curr_ele->list);
             q_release_element(curr_ele);
             is_dup = true;
