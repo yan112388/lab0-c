@@ -14,3 +14,24 @@ ih c
 ih d
 ih a
 ih c
+descend
+rh d
+rh c
+rh b
+rh a
+free
+new
+ih a 3
+ih b
+ih c
+ih d
+ih e 2
+reverseK 3
+rh d
+rh e
+rh e
+rh a
+rh b
+rh c
+rh a
+rh a
